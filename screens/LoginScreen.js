@@ -83,7 +83,7 @@ const LoginScreen = () => {
             placeholder="Password"
             value={ password }
             onChangeText={text => setPassword(text)}
-            keyboardType='email-address'
+            keyboardType=''
             style={styles.input}
             secureTextEntry
         />
