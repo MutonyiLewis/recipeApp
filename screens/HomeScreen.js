@@ -18,7 +18,7 @@ const HomeScreen = () => {
     //Handle Submit to API
     const searchFood = async () => {
         try{
-            const apiUrl = 'https://cors-anywhere.herokuapp.com/http://d201-35-188-226-133.ngrok-free.app/get_recipe_recommendations'
+            const apiUrl = 'https://cors-anywhere.herokuapp.com/http://b286-35-221-251-221.ngrok-free.app/get_recipe_recommendations'
 
             const requestBody = {
                 query,
@@ -134,16 +134,16 @@ const HomeScreen = () => {
             // <ActivityIndicator size="large" color="#0000ff"/>
         )} */}
 
-        
+    <View style={styles.container}>
+        <Text>Email: {auth.currentUser?.email}</Text>
+        <Pressable style={styles.button} onPress={handleSignOut}>
+            <Text style={styles.buttonText}>Sign Out</Text>
+        </Pressable>
+    </View>
 
     </KeyboardAvoidingView>
     
-    // <View style={styles.container}>
-    //     <Text>Email: {auth.currentUser?.email}</Text>
-    //     <Pressable style={styles.button} onPress={handleSignOut}>
-    //         <Text style={styles.buttonText}>Sign Out</Text>
-    //     </Pressable>
-    // </View>
+   
   )
 }
 
@@ -162,6 +162,7 @@ const styles = StyleSheet.create({
         borderRadius: 35,
         borderColor: 'green',
         backgroundColor: '#647403',
+        marginTop: 50
 
     },
     input:{
