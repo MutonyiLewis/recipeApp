@@ -81,7 +81,15 @@ const HomeScreen = () => {
                 setLocation(itemValue)}
             >
                 <Picker.Item label="Nairobi" value="Nairobi"/>
-                <Picker.Item label="Nakuru" value="Nakuru" />
+                <Picker.Item label="Coast" value="Coast" />
+                <Picker.Item label="Rift" value="Rift"/>
+                <Picker.Item label="Western" value="Western" />
+                <Picker.Item label="Eastern" value="Eastern"/>
+                <Picker.Item label="Nyanza" value="Nyanza" />
+                <Picker.Item label="Central" value="Central"/>
+                <Picker.Item label="Northern" value="Northern" />
+                <Picker.Item label="Southern" value="Southern"/>
+                <Picker.Item label="Kenya" value="Kenya" />
             </Picker>
             <TextInput
                 placeholder='Enter your blood sugar level from glycometer'
