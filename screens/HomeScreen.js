@@ -1,4 +1,4 @@
-import { Alert, KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, Text, TextInput, View, Picker } from 'react-native'
+import { KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, Text, TextInput, View, Picker } from 'react-native'
 import React, { useState } from 'react'
 import { auth } from '../firebase'
 import { useNavigation } from '@react-navigation/native'
@@ -18,7 +18,7 @@ const HomeScreen = () => {
     //Handle Submit to API
     const searchFood = async () => {
         try{
-            const apiUrl = 'https://cors-anywhere.herokuapp.com/http://b286-35-221-251-221.ngrok-free.app/get_recipe_recommendations'
+            const apiUrl = 'https://cors-anywhere.herokuapp.com/http://5af0-34-106-135-24.ngrok-free.app/get_recipe_recommendations'
 
             const requestBody = {
                 query,
@@ -73,12 +73,6 @@ const HomeScreen = () => {
                 value={query}
                 onChangeText={text => setQuery(text)}
             />
-            {/* <TextInput
-                placeholder='Enter your location'
-                style={styles.input}
-                value={location}
-                onChangeText={text => setLocation(text)}
-            /> */}
             <Picker
             style={styles.input}
             placeholder='Select your Location'
@@ -105,34 +99,6 @@ const HomeScreen = () => {
                 <Text style={styles.buttonText}>Search food</Text>
             </Pressable>
         </View>
-        {/* {recommendations && (
-        <View style={{ marginTop: 20 }}>
-          <Text>Title: {recommendations.title}</Text>
-          <Text>Location: {recommendations.location}</Text>
-          <Text>Ingredients: {recommendations.ingridients}</Text>
-          <Text>Preparation: {recommendations.preparation}</Text>
-          <Text>Carbohydrates(g): {recommendations['carbohydrates(g)']}</Text>
-          <Text>Proteins(g): {recommendations['proteins(g)']}</Text>
-          <Text>Fibre(g): {recommendations['fibre(g)']}</Text>
-        </View>
-      )} */}
-        {/* {recommendations ? (
-            <View>
-                <Text style={{ fontSize: 20 }}>Recommendations:</Text>
-                <Text>Title: {recommendations.title}</Text>
-                <Text>Location: {recommendations.location}</Text>
-                <Text>Ingredients: {recommendations.ingridients}</Text>
-                <Text>Preparation: {recommendations.preparation}</Text>
-                <Text>Carbohydrates: {recommendations.carbohydrates(g)}</Text>
-                <Text>Proteins: {recommendations.proteins(g)}</Text>
-                <Text>Fibre: {recommendations.fibre(g)}</Text>
-            </View>
-        ): error ? (
-            <Text>{error}</Text>
-        ): (
-            <Text>Enter your query and blood sugar to get recommendations.</Text>
-            // <ActivityIndicator size="large" color="#0000ff"/>
-        )} */}
 
     <View style={styles.container}>
         <Text>Email: {auth.currentUser?.email}</Text>
