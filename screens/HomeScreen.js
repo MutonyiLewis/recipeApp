@@ -18,7 +18,7 @@ const HomeScreen = () => {
     //Handle Submit to API
     const searchFood = async () => {
         try{
-            const apiUrl = 'https://cors-anywhere.herokuapp.com/http://5af0-34-106-135-24.ngrok-free.app/get_recipe_recommendations'
+            const apiUrl = 'https://cors-anywhere.herokuapp.com/http://6968-34-67-9-82.ngrok-free.app/get_recipe_recommendations'
 
             const requestBody = {
                 query,
