@@ -25,38 +25,41 @@ const RecommendationScreen = ({route}) => {
 
   
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Image
-        source={require('../assets/images/recommendation.jpg')}
-        alt='Photo by Hari Nandakumar on Unsplash'
-        style={styles.headerImage}
-        />
-        <View style={styles.headerContent}>
-          <Text style={styles.titleText}>{recommendations.title}</Text>
+    <View>
+      {recommendations.map((recipe, index) => (
+        <ScrollView key={index} style={styles.container}>
+        <View style={styles.headerContainer}>
+          <Image
+          source={require('../assets/images/recommendation.jpg')}
+          alt='Photo by Hari Nandakumar on Unsplash'
+          style={styles.headerImage}
+          />
+          <View style={styles.headerContent}>
+            <Text style={styles.titleText}>{recipe.title}</Text>
+          </View>
         </View>
-      </View>
-
-      <View style={styles.ingridientsContainer}>
-        <Text style={styles.ingridientsTitle}>Ingredients</Text>
-        <Text style={styles.ingridientsText}>{recommendations.ingridients}</Text>
-      </View>
-
-      <View style={styles.preparationContainer}>
-        <Text style={styles.preparationTitle}>Preparation</Text>
-        <Text style={styles.preparationText}>{recommendations.preparation}</Text>
-      </View>
-      <View style={styles.detailsContainer}>
-      <Text style={styles.detailsText}>Location: {recommendations.location} | </Text>
-      <Text style={styles.detailsText}>Carbohydrates(g): {recommendations['carbohydrates(g)']} | </Text>
-      <Text style={styles.detailsText}>Proteins(g): {recommendations['proteins(g)']} | </Text>
-      <Text style={styles.detailsText}>Fibre(g): {recommendations['fibre(g)']} | </Text>
-      <Text style={styles.detailsText}>Average GI(%): {Math.round(parseFloat(recommendations['Average GI(%)']))} </Text>
-      </View>
-    </ScrollView>
-  )
-}
-
+  
+        <View style={styles.ingridientsContainer}>
+          <Text style={styles.ingridientsTitle}>Ingredients</Text>
+          <Text style={styles.ingridientsText}>{recipe.ingridients}</Text>
+        </View>
+  
+        <View style={styles.preparationContainer}>
+          <Text style={styles.preparationTitle}>Preparation</Text>
+          <Text style={styles.preparationText}>{recipe.preparation}</Text>
+        </View>
+        <View style={styles.detailsContainer}>
+        <Text style={styles.detailsText}>Location: {recipe.location} | </Text>
+        <Text style={styles.detailsText}>Carbohydrates(g): {recipe['carbohydrates(g)']} | </Text>
+        <Text style={styles.detailsText}>Proteins(g): {recipe['proteins(g)']} | </Text>
+        <Text style={styles.detailsText}>Fibre(g): {recipe['fibre(g)']} | </Text>
+        <Text style={styles.detailsText}>Average GI(%): {Math.round(parseFloat(recommendations['Average GI(%)']))} </Text>
+        </View>
+      </ScrollView>
+      ))}
+    </View>
+  );
+};
 export default RecommendationScreen
 
 const styles = StyleSheet.create({

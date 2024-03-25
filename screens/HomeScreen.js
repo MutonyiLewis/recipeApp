@@ -2,7 +2,8 @@ import { KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, Text, TextInpu
 import React, { useState } from 'react'
 import { auth } from '../firebase'
 import { useNavigation } from '@react-navigation/native'
-import axios from 'axios'
+import { client } from "@gradio/client";
+
 
 const HomeScreen = () => {
 
@@ -18,32 +19,20 @@ const HomeScreen = () => {
     //Handle Submit to API
     const searchFood = async () => {
         try{
-            const apiUrl = 'https://cors-anywhere.herokuapp.com/http://6968-34-67-9-82.ngrok-free.app/get_recipe_recommendations'
-
-            const requestBody = {
+            const app = await client("mutonyilewis/GetRecipes");
+            const result = await app.predict("/predict", [
                 query,
-                location, 
-                blood_sugar: parseInt(bloodSugar),
-            }
+                location,
+                parseInt(bloodSugar),
+            ]);
 
-            const response = await fetch(apiUrl, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                },
-                body: JSON.stringify(requestBody),
-            })
+            const responseData = await result
+            console.log(responseData.data);
 
-            if (!response.ok) {
-                throw new Error("Failed to fetch recommendations. HTTP error! status: " + response.status);
-            }
-
-            const responseData = await response.json()
-            // setRecommendations(responseData.recommendations)
-            navigation.navigate('Recommendation', {recommendations: responseData.recommendations})
+            // Now 'result' contains the response data
+            navigation.navigate('Recommendation', { recommendations: responseData.data });
         } catch (error) {
-            console.log("Error in Search Food Function")
+            console.log("Error in Search Food Function", error);
             alert(error)
         }
     }
