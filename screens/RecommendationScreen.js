@@ -25,9 +25,9 @@ const RecommendationScreen = ({route}) => {
 
   
   return (
-    <View>
+    <ScrollView style={styles.container}>
       {recommendations.map((recipe, index) => (
-        <ScrollView key={index} style={styles.container}>
+        <View key={index} >
         <View style={styles.headerContainer}>
           <Image
           source={require('../assets/images/recommendation.jpg')}
@@ -55,9 +55,9 @@ const RecommendationScreen = ({route}) => {
         <Text style={styles.detailsText}>Fibre(g): {recipe['fibre(g)']} | </Text>
         <Text style={styles.detailsText}>Average GI(%): {Math.round(parseFloat(recommendations['Average GI(%)']))} </Text>
         </View>
-      </ScrollView>
+      </View>
       ))}
-    </View>
+    </ScrollView>
   );
 };
 export default RecommendationScreen

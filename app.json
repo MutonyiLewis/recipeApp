@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "scheme": "recipeApp",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -26,12 +27,16 @@
       "package": "com.mutonyilewis.recipeApp"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "bundler": "metro",
+      "output": "static"
     },
     "extra": {
       "eas": {
         "projectId": "52e85dc4-6778-4a6a-9dd6-03d9a6324e4a"
       }
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

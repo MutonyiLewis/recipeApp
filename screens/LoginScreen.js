@@ -49,6 +49,7 @@ const LoginScreen = () => {
                 //Signed in 
                 const user = userCredentials.user;
                 console.log('Logged in as: ', user.email)
+                navigation.replace("Home")
             })
             .catch ((error) => {
                 alert(error.message)
@@ -56,6 +57,7 @@ const LoginScreen = () => {
     }
 
   return (
+    <View style={styles.bigContainer}>
     <ImageBackground
     source={require('../assets/images/auth.jpg')}
     style={styles.backgroundImage}
@@ -106,16 +108,24 @@ const LoginScreen = () => {
       
     </KeyboardAvoidingView>
     </ImageBackground>
+    </View>
   )
 }
 
 export default LoginScreen
 
 const styles = StyleSheet.create({
+    bigContainer:{
+        flex: 1,
+    },
     backgroundImage:{
         opacity: 0.9, // Set opacity to 60%
-        flex: 1, // Ensure the image covers the entire view
-        resizeMode: 'cover',
+        // flex: 1, // Ensure the image covers the entire view
+        justifyContent: 'center',
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        resizeMode: 'contain',
         zIndex: -1
     },
     container:{
