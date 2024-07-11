@@ -2,7 +2,6 @@ import { KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, Text, TextInpu
 import React, { useState } from 'react'
 import { auth } from '../firebase'
 import { useNavigation } from '@react-navigation/native'
-import { client } from "@gradio/client";
 
 
 const HomeScreen = () => {
@@ -19,21 +18,25 @@ const HomeScreen = () => {
     //Handle Submit to API
     const searchFood = async () => {
         try{
-            const app = await client("mutonyilewis/GetRecipes");
-            const result = await app.predict("/predict", [
-                query,
-                location,
-                parseInt(bloodSugar),
-            ]);
+            const response = await fetch('http://localhost:5000/searchfood', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query, location, bloodSugar: parseInt(bloodSugar) })
+            })
 
-            const responseData = await result
-            console.log(responseData.data);
+            if(!response.ok) {
+                throw new Error('Something went wrong fetching recommendation')
+            }
+            const responseData = await response.json()
 
-            // Now 'result' contains the response data
-            navigation.navigate('Recommendation', { recommendations: responseData.data });
-        } catch (error) {
-            console.log("Error in Search Food Function", error);
-            alert(error)
+            //Handle response data
+            const recommendation = responseData.recommendations.filter(recipe => recipe !== null)
+            console.log(recommendation)
+            navigation.navigate('Recommendation', { recommendations: recommendation })
+        }catch (error) {
+            console.error(error)
         }
     }
 

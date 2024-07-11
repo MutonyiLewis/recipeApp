@@ -1,27 +1,14 @@
 import { ScrollView, StyleSheet, Text, View, Image} from 'react-native'
 
-
+const capitalizeWords = (str) => {
+  return str.replace(/\b\w/g, (char) => char.toUpperCase())
+}
 const RecommendationScreen = ({route}) => {
 
-  const {recommendations} = route.params;
-
-  //Fetch image url based on title
-  // const [imageUrl, setImageUrl] = useState('');
-  // const recipeTitle = (recommendations.title); 
-  // const unsplashAcessKey = 'INKFrtSn1GZZkE1AD92FjFHS0qJFXbUy2Mor84eAYK4'; 
-
-  // const fetchRequest = () => {
-  //   const data = fetch(
-  //     `https://api.unsplash.com/search/photos?page=1&query=${recipeTitle}&client_id=${unsplashAcessKey}`
-  //   );
-  //   const dataJ = data.json();
-  //   const result = dataJ.results[0];
-  //   console.log(result);
-  //   setImageUrl(result.urls.regular);
-  // };
-  // useEffect(() => {
-  //   fetchRequest();
-  // }, []);
+  const {recommendations} = route.params 
+  
+  // // Check if recommendations is defined and filter out undefined 
+  // const validRecommendations = recommendations ? recommendations.filter(recipe => recipe !==  undefined) : [];
 
   
   return (
@@ -35,7 +22,7 @@ const RecommendationScreen = ({route}) => {
           style={styles.headerImage}
           />
           <View style={styles.headerContent}>
-            <Text style={styles.titleText}>{recipe.title}</Text>
+            <Text style={styles.titleText}>{capitalizeWords(recipe.title)}</Text>
           </View>
         </View>
   
@@ -89,7 +76,7 @@ const styles = StyleSheet.create({
   titleText: {
     color: '#fff',
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   ingridientsContainer: {
     backgroundColor: '#647403',
