@@ -15,7 +15,7 @@ const LoginScreen = () => {
         //check if user is already logged in
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user){
-                navigation.replace("Home")
+                navigation.navigate("Home")
 
                 // Start timeout for logout
                 const timeoutId = setTimeout(() => {
@@ -28,7 +28,7 @@ const LoginScreen = () => {
         })
 
         return unsubscribe
-    }, [])
+    }, [navigation])
 
 
     const handleSignUp = () => {
@@ -49,7 +49,7 @@ const LoginScreen = () => {
                 //Signed in 
                 const user = userCredentials.user;
                 console.log('Logged in as: ', user.email)
-                navigation.replace("Home")
+                navigation.navigate("Home")
             })
             .catch ((error) => {
                 alert(error.message)
