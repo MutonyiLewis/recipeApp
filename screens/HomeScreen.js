@@ -18,7 +18,7 @@ const HomeScreen = () => {
     //Handle Submit to API
     const searchFood = async () => {
         try{
-            const response = await fetch('http://localhost:5000/searchfood', {
+            const response = await fetch('https://recipesservice.azurewebsites.net/searchfood', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
