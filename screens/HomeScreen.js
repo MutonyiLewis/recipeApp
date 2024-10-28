@@ -18,7 +18,8 @@ const HomeScreen = () => {
     //Handle Submit to API
     const searchFood = async () => {
         try{
-            const response = await fetch('https://recipesservice.azurewebsites.net/searchfood', {
+            // Add API endpoint once pull
+            const response = await fetch('process.env.URL', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
